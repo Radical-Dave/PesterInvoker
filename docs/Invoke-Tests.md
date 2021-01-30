@@ -1,14 +1,14 @@
 ---
-external help file: Build-SitecoreDocker-help.xml
-Module Name: Build-SitecoreDocker
+external help file: Invoke-Tests-help.xml
+Module Name: PesterInvoker
 online version:
 schema: 2.0.0
 ---
 
-# Build-SitecoreDocker
+# Invoke-Tests
 
 ## SYNOPSIS
-This script says hello to the user from VSTS
+PowerShell Module for PowerShell Module development testing using Pester
 
 ## SYNTAX
 

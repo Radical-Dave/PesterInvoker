@@ -10,7 +10,7 @@
     $ModuleManifestName = "$ModuleScriptName.psd1"
     $ModuleManifestPath = "$PSScriptRoot\..\..\src\$ModuleManifestName"
 
-    Describe 'Module Tests' {
+    Describe "$ModuleScriptName.Module.Base.Tests" {
         $ModuleScriptName = Split-Path (Split-Path (Split-Path $PSScriptRoot -Parent) -Parent) -Leaf
         $ModuleScriptPath = "$PSScriptRoot\..\..\src\$ModuleScriptName"
 
@@ -25,7 +25,7 @@
         }
     }
 
-    Describe 'Module Manifest Tests' {
+    Describe "$ModuleScriptName.Module.Manifest.Base.Tests" {
         #$ModuleManifestName = "$ModuleScriptName.psd1"
         #$ModuleManifestPath = "$PSScriptRoot\..\..\src\$ModuleManifestName"
 

@@ -1,2 +1,2 @@
 # PesterInvoker
-Invoke-Tests - generic script to run tests
+Invoke-Tests - PowerShell Module for PowerShell Module development testing using Pester

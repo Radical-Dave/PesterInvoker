@@ -2,13 +2,11 @@ Set-StrictMode -Version Latest
 <#
 #  Invoke-Tests
 .SYNOPSIS
-    Sets current working directory and returns original directory as string so it can be restored when ready
+    PowerShell Module for PowerShell Module development testing using Pester
 .DESCRIPTION
-    Sets current working directory
+    PowerShell Module for PowerShell Module development testing using Pester
 .PARAMETER Path
-    Specifies the path that needs to be set as current working directory
-.PARAMETER Cwd
-    Specifies the path that should be reset to return to original working directory.
+    Specifies the path that needs to be set as current working directory to discover tests
 .EXAMPLE
     PS C:\> Invoke-Tests -Path VAR1 -Cwd "value one"
 .EXAMPLE
@@ -23,28 +21,31 @@ Set-StrictMode -Version Latest
 function Invoke-Tests
 {
 	param(
-		[Parameter(HelpMessage="Tests in scope to invoke")]
+		[Parameter(HelpMessage="Specifies the path that needs to be set as current working directory to discover tests")]
         [Alias('p')]
         [string] $Path = '.'
 	)
-	if($PSVersionTable.PSVersion.major -eq 2) {
-		$PSCommandPath = [ref]$MyInvocation.MyCommand.Definition
-	}
+	#if($PSVersionTable.PSVersion.major -eq 2) {
+	#	$PSCommandPath = [ref]$MyInvocation.MyCommand.Definition
+	#}
     $owd = $pwd
-	$scriptPath = $PSCommandPath
-	$repoPath = (Split-Path (Split-Path( Split-Path $scriptPath -Parent) -Parent) -Parent)
-	$moduleName = Split-Path $repoPath -Leaf
-	$modulePath = Join-Path (Split-Path (Split-Path (Split-Path $scriptPath -Parent) -Parent) -Parent) "\src\$moduleName.psm1"
-	#if(Get-Module $moduleName -ErrorAction SilentlyContinue) {
+	#$scriptPath = $PSCommandPath
+	#$repoPath = (Split-Path (Split-Path( Split-Path $scriptPath -Parent) -Parent) -Parent)
+	#$moduleName = Split-Path $repoPath -Leaf
+    #Write-Verbose "moduleName:$moduleName"
+	#$modulePath = Join-Path (Split-Path (Split-Path (Split-Path $scriptPath -Parent) -Parent) -Parent) "/src/$moduleName.psm1"
+	#Write-Verbose "modulePath:$modulePath"
+    #if(Get-Module $moduleName -ErrorAction SilentlyContinue) {
 	#	Remove-Module $moduleName -Force
 	#}
-    if(!(Get-Module $moduleName -ErrorAction SilentlyContinue)) {
-        Import-Module $modulePath -Force -Scope Global -ErrorAction Stop
-    }
-	if (!$Path) {
-        $Path = $pwd
-    }
+    #if(!(Get-Module $moduleName -ErrorAction SilentlyContinue)) {
+    #    Import-Module $modulePath -Force -Scope Global -ErrorAction Stop
+    #}
+	#if (!$Path) {
+    #    $Path = $pwd
+    #}
+    Write-Verbose "Path:$Path"
     Set-Location $Path
-    Invoke-Pester
+    Invoke-Pester -verbose
     Set-Location $owd
 }
