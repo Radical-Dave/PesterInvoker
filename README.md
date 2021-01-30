@@ -1,2 +1,2 @@
-# PesterRunner
-Run-Tests - generic script to run tests
+# PesterInvoker
+Invoke-Tests - generic script to run tests

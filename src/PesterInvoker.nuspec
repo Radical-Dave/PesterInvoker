@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>PesterRunner</id>
+    <version>0.0.84</version>
+    <authors>David Walker, Radical Dave, Sitecore Dave</authors>
+    <description>PowerShell extensions for Docker-based Sitecore development</description>
+    <copyright>Copyright (C) by Radical Dave</copyright>
+    <releaseNotes>Version 0.0.84 was modified by david on 01/27/21</releaseNotes>
+    <tags>sitecore docker powershell</tags>
+  </metadata>
+</package>
