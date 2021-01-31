@@ -13,6 +13,7 @@ $public = @(Get-ChildItem -Path (Join-Path $PSScriptRoot Public) -Include *.ps1 
 # Private must be sourced first - usage in public functions during load
 ($private + $public) | ForEach-Object {
     try {
+        if($_.FullName.EndsWith(".psd1")) { return }
         . $_.FullName
     }
     catch {
