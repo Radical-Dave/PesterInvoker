@@ -1,5 +1,5 @@
-. $PSScriptRoot\..\..\src\Public\Invoke-Tests.ps1 {
-    . $PSScriptRoot\..\..\src\Public\Test-Utils.ps1
+. $PSScriptRoot\..\..\src\PesterInvoker\Public\Invoke-Tests.ps1 {
+    . $PSScriptRoot\..\..\src\PesterInvoker\Public\Test-Utils.ps1
 
     if (!(Get-Module PSScriptAnalyzer -ErrorAction SilentlyContinue)) {
         Install-Module -Name PSScriptAnalyzer -Repository PSGallery -Force

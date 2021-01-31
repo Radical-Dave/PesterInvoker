@@ -1,5 +1,6 @@
 $ModuleScriptName = Split-Path (Split-Path (Split-Path $PSScriptRoot -Parent) -Parent) -Leaf
-$ModuleScriptPath = Join-Path $PSScriptRoot "../../src/$ModuleScriptName.psm1"
+Write-Verbose "ModuleScriptName:$ModuleScriptName"
+$ModuleScriptPath = Join-Path $PSScriptRoot "../../src/$ModuleScriptName/$ModuleScriptName.psm1"
 Get-Module $ModuleScriptName | Remove-Module -Force
 Import-Module $ModuleScriptPath
 InModuleScope $ModuleScriptName {
@@ -25,7 +26,7 @@ InModuleScope $ModuleScriptName {
         It 'passes Test-ModuleManifest' {
             $ModuleScriptName = Split-Path (Split-Path (Split-Path $PSScriptRoot -Parent) -Parent) -Leaf
             $ModuleManifestName = "$ModuleScriptName.psd1"
-            $ModuleManifestPath = Join-Path $PSScriptRoot "../../src/$ModuleManifestName"
+            $ModuleManifestPath = Join-Path $PSScriptRoot "../../src/$ModuleScriptName/$ModuleManifestName"
             Write-Verbose $ModuleManifestPath
             Test-ModuleManifest -Path $ModuleManifestPath | Should -Not -BeNullOrEmpty
             $? | Should -Be $true
