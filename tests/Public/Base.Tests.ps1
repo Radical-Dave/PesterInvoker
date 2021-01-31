@@ -5,10 +5,10 @@ Get-Module $ModuleScriptName | Remove-Module -Force
 Import-Module $ModuleScriptPath
 InModuleScope $ModuleScriptName {
     $ModuleScriptName = Split-Path (Split-Path (Split-Path $PSScriptRoot -Parent) -Parent) -Leaf
-    $ModuleScriptPath = Join-Path $PSScriptRoot "../../src/$ModuleScriptName.psm1"
+    $ModuleScriptPath = Join-Path $PSScriptRoot "../../src/$ModuleScriptName/$ModuleScriptName.psm1"
     Describe "$ModuleScriptName.Module.Base.Tests" {
         $ModuleScriptName = Split-Path (Split-Path (Split-Path $PSScriptRoot -Parent) -Parent) -Leaf
-        $ModuleScriptPath = Join-Path $PSScriptRoot "../../src/$ModuleScriptName"
+        $ModuleScriptPath = Join-Path $PSScriptRoot "../../src/$ModuleScriptName/$ModuleScriptName"
         It 'imports successfully' {
             $ModuleScriptName = Split-Path (Split-Path (Split-Path $PSScriptRoot -Parent) -Parent) -Leaf
             $ModuleScriptPath = Join-Path $PSScriptRoot "../../src/$ModuleScriptName"
