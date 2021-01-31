@@ -28,7 +28,7 @@ function Invoke-Tests
 	#if($PSVersionTable.PSVersion.major -eq 2) {
 	#	$PSCommandPath = [ref]$MyInvocation.MyCommand.Definition
 	#}
-    $owd = $pwd
+    #$owd = $pwd
 	#$scriptPath = $PSCommandPath
 	#$repoPath = (Split-Path (Split-Path( Split-Path $scriptPath -Parent) -Parent) -Parent)
 	#$moduleName = Split-Path $repoPath -Leaf
@@ -45,7 +45,9 @@ function Invoke-Tests
     #    $Path = $pwd
     #}
     Write-Verbose "Path:$Path"
-    Set-Location $Path
+    #Set-Location $Path
+    Push-Location $Path
     Invoke-Pester -verbose
-    Set-Location $owd
+    #Set-Location $owd
+    Pop-Location
 }

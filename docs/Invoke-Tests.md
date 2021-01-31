@@ -13,11 +13,11 @@ PowerShell Module for PowerShell Module development testing using Pester
 ## SYNTAX
 
 ```
-Build-SitecoreDocker
+Invoke-Tests
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+PowerShell Module for PowerShell Module development testing using Pester
 
 ## EXAMPLES
 
